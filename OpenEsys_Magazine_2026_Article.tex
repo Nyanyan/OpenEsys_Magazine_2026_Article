@@ -5,7 +5,13 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{fontspec}
 \usepackage[hidelinks]{hyperref}
+
+\setmainfont{Latin Modern Roman}[Scale=0.92]
+\setsansfont{Latin Modern Sans}[Scale=0.92]
+\setmonofont{Latin Modern Mono}[Scale=0.90]
+\urlstyle{same}
 
 \setlength{\columnsep}{8mm}
 \setlength{\parindent}{1em}
@@ -15,8 +21,8 @@
 
 \title{\vspace{-8mm}\bfseries 自分の鎖骨を印刷したい}
 \author{
-  山名琢翔$^{1}$\\[1mm]
-  \small $^{1}$筑波大学大学院 デザイン学学位プログラム 博士前期課程2年 (元esys20)\\
+  山名琢翔\textsuperscript{1}\\[1mm]
+  \small \textsuperscript{1}筑波大学大学院 デザイン学学位プログラム 博士前期課程2年 (元esys20)\\
   \small \texttt{yamana.takuto.rg@alumni.tsukuba.ac.jp}
 }
 \date{}
@@ -96,7 +102,7 @@ CTとはComputed Tomographyの略であり、体に向けて様々な角度か�
 
 紹介状に付属していたCDを開くとREADME.txtが存在しており、その中には「ディスク内の「DICOM Viewer（またはDICOM Viewer.bat）」をダブルクリックしてください。」という記載があった。そのため、該当batファイルを実行すると、\figref{fig:proradviewer_hidden}に示すビューワーが起動した。このビューワーによって、すべてのCTやレントゲン画像を閲覧することができた。紹介状のCDを読み込むのに専用ソフトが不要であるのは非常に素晴らしいことである。各種画像を閲覧するだけで、自分が確かに人間の体をしていることを実感できるため、非常に面白かった。右鎖骨はしっかり折れていた。
 
-なお、紹介状には\figref{fig:hospital-r-clavicle}に示した鎖骨単体の3Dデータらしきものが含まれていたが、これはよく解析すると特定の軸に沿って回転させた様子を写した31枚の画像データでしかなく、このデータから3Dデータを作ることは不可能であった。つまり、CTの画像データから自分で3Dデータを作成するしかなかった。
+なお、紹介状には\figref{fig:hospital-r-clavicle}に示した鎖骨単体の3Dデータらしきものが含まれていたが、これはよく解析すると特定の軸に沿って回転させた様子を写した31枚の画像データでしかなく、このデータから3Dデータを作ることは不可能であった。つまり、CTの画像データから自分で3Dデータを作成する必要があった。
 
 
 % \begin{strip}
