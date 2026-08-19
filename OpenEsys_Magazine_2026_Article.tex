@@ -87,8 +87,15 @@ CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル�
 
 \section{紹介状データの読み込み}
 
-病院の紹介状CDを開くと、README.txtが存在しており、その中には「ディスク内の「DICOM Viewer（またはDICOM Viewer.bat）」をダブルクリックしてください。」という記載があった。そのため、該当batファイルを実行すると、撮影したCTやレントゲンの画像が閲覧できるビューワーが起動した(個人情報が大量に含まれるため、ビューワーの画像は省略)。紹介状のCDを読み込むのに専用ソフトが不要であるのは非常に素晴らしいことである。なお、紹介状には\figref{fig:hospital-r-clavicle}に示した鎖骨のデータが含まれていたが、これは31枚の画像として含まれているのみであり、このデータから3Dデータを作ることは不可能であった。
+病院の紹介状CDを開くと、README.txtが存在しており、その中には「ディスク内の「DICOM Viewer（またはDICOM Viewer.bat）」をダブルクリックしてください。」という記載があった。そのため、該当batファイルを実行すると、撮影したCTやレントゲンの画像が閲覧できる、\figref{fig:proradviewer_hidden}に示すビューワーが起動した。紹介状のCDを読み込むのに専用ソフトが不要であるのは非常に素晴らしいことである。なお、紹介状には\figref{fig:hospital-r-clavicle}に示した鎖骨のデータが含まれていたが、これは31枚の画像として含まれているのみであり、このデータから3Dデータを作ることは不可能であった。
 
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\linewidth]{img/proradviewer_hidden.png}
+  \caption{紹介状のCDに付属していたビューワー}
+  \label{fig:proradviewer_hidden}
+\end{figure}
 
 
 
