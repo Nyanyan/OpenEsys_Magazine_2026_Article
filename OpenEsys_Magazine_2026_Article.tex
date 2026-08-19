@@ -1,0 +1,132 @@
+% !TEX program = lualatex
+\documentclass[10pt,a4paper,twocolumn]{ltjsarticle}
+
+\usepackage[top=22mm,bottom=24mm,left=18mm,right=18mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\columnsep}{8mm}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0pt}
+
+\title{\vspace{-8mm}\bfseries OpenEsys Magazine 2026 Article Title}
+\author{
+  著者名$^{1}$ \and
+  共著者名$^{2}$\\[1mm]
+  \small $^{1}$所属機関・部署 \quad
+  \small $^{2}$所属機関・部署\\
+  \small \texttt{author@example.com}
+}
+\date{}
+
+\begin{document}
+
+\twocolumn[
+  \maketitle
+  \begin{abstract}
+    本稿では、ここに研究・開発・実践報告の概要を150--250字程度で記述する。
+    背景、目的、方法、主要な結果、貢献を簡潔にまとめ、読者が本文の要点を
+    すばやく把握できるようにする。
+  \end{abstract}
+
+  \vspace{1mm}
+  \noindent\textbf{Keywords:}
+  OpenEsys, システム設計, 実装, 評価, オープンソース
+
+  \vspace{5mm}
+]
+
+\section{はじめに}
+
+研究背景、問題意識、本稿の目的を述べる。
+関連する社会的・技術的文脈を簡潔に整理し、読者に「なぜこの話題が重要か」を示す。
+
+本稿の主な貢献は以下のとおりである。
+
+\begin{itemize}[leftmargin=*,nosep]
+  \item 対象とする課題を明確化した。
+  \item 提案手法または実装方針を整理した。
+  \item 評価結果と今後の改善点を示した。
+\end{itemize}
+
+\section{関連研究・背景}
+
+既存研究、既存システム、先行事例を概観する。
+本稿の位置づけを明確にするため、何がすでに解決されており、何が未解決なのかを述べる。
+
+\section{提案手法}
+
+提案する設計、方式、アーキテクチャ、または実践内容を説明する。
+必要に応じて図表を用いる。
+
+\begin{figure}[t]
+  \centering
+  \fbox{\rule{0pt}{28mm}\rule{0.9\linewidth}{0pt}}
+  \caption{提案システムの概要図}
+  \label{fig:overview}
+\end{figure}
+
+図\ref{fig:overview}に、提案システムの全体像を示す。
+本文では、各構成要素の役割とデータの流れを順に説明する。
+
+\section{実装}
+
+実装環境、利用したライブラリ、主要なモジュール構成を述べる。
+再現性を意識し、バージョンや設定値も必要に応じて記録する。
+
+\begin{table}[t]
+  \centering
+  \caption{実装環境}
+  \label{tab:environment}
+  \begin{tabular}{ll}
+    \toprule
+    項目 & 内容 \\
+    \midrule
+    OS & Ubuntu 24.04 / Windows 11 \\
+    言語 & Python / C++ / Rust など \\
+    ライブラリ & Example Library \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{評価}
+
+評価方法、データセット、比較条件、評価指標を説明する。
+結果だけでなく、結果が示す意味や制約も記述する。
+
+\begin{equation}
+  \mathrm{Score} =
+  \frac{1}{N}\sum_{i=1}^{N} x_i
+  \label{eq:score}
+\end{equation}
+
+式\ref{eq:score}は、評価指標の一例である。
+
+\section{考察}
+
+提案手法の有効性、限界、適用範囲について議論する。
+予想と異なる結果が出た場合は、その理由を技術的・運用的観点から検討する。
+
+\section{おわりに}
+
+本稿の内容を簡潔にまとめ、今後の課題を述べる。
+将来的な展開、追加実験、実運用に向けた改善点などを記載する。
+
+\section*{謝辞}
+
+本研究・開発に協力いただいた方々、助成、コミュニティへの謝辞を記載する。
+
+\begin{thebibliography}{9}
+
+\bibitem{sample}
+著者名,
+``論文または記事タイトル,''
+\textit{会議名または誌名},
+vol.~1, no.~1, pp.~1--10, 2026.
+
+\end{thebibliography}
+
+\end{document}
