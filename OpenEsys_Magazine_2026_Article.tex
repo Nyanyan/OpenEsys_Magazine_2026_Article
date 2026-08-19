@@ -99,15 +99,23 @@ CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル�
 
 \section{3D Slicerによる立体化}
 
-CTデータの立体化には3D Slicer\cite{3d-slicer}を使用した。3D Slicerでは、特定のCT画像群を指定して、Thresholdという値を調整することで、任意の明るさの画素を自動で選択する機能がある。骨は非常に白く写るため、この機能で右鎖骨周辺のCT画像の中から骨のみを抽出した。
+CTデータの立体化には3D Slicer\cite{3d-slicer}を使用した。3D Slicerでは、特定のCT画像群を指定して、Thresholdという値を調整することで、任意の明るさの画素を自動で選択する機能がある。骨は非常に白く写るため、この機能で右鎖骨周辺のCT画像の中から骨のみを抽出した(\figref{fig:3dslicer-bones})。
 
-その後、手作業で右鎖骨以外の部分を削除し、欠損している部分(骨端は特に欠損が多かった)を補い、右鎖骨の3Dデータを得た。これをSTLファイルとして出力した。
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\linewidth]{img/3dslicer-bones.png}
+  \caption{右鎖骨周辺の骨部分を抽出した様子}
+  \label{fig:3dslicer-bones}
+\end{figure}
+
+
+その後、手作業で右鎖骨以外の部分を削除し、欠損している部分(骨端は特に欠損が多かった)を補い、平滑化して右鎖骨の3Dデータを得た(\figref{fig:3dslicer-clavicle})。これをSTLファイルとして出力した。
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\linewidth]{img/3dslicer-clavicle.png}
   \caption{右鎖骨の3Dデータが完成した様子}
-  \label{3dslicer-clavicle}
+  \label{fig:3dslicer-clavicle}
 \end{figure}
 
 
