@@ -87,7 +87,7 @@ CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル�
 
 \section{紹介状データの読み込み}
 
-病院の紹介状CDを開くと、README.txtが存在しており、その中には「ディスク内の「DICOM Viewer（またはDICOM Viewer.bat）」をダブルクリックしてください。」という記載があった。そのため、該当batファイルを実行すると、撮影したCTやレントゲンの画像が閲覧できるビューワーが起動した(個人情報が大量に含まれるため、ビューワーの画像は省略)。
+病院の紹介状CDを開くと、README.txtが存在しており、その中には「ディスク内の「DICOM Viewer（またはDICOM Viewer.bat）」をダブルクリックしてください。」という記載があった。そのため、該当batファイルを実行すると、撮影したCTやレントゲンの画像が閲覧できるビューワーが起動した(個人情報が大量に含まれるため、ビューワーの画像は省略)。紹介状のCDを読み込むのに専用ソフトが不要であるのは非常に素晴らしいことである。
 
 
 
@@ -107,7 +107,23 @@ CTデータの立体化には3D Slicerを使用した。
 
 \section{骨折部位のデータ加工}
 
-3D Slicerで出力したSTLファイルをAutodesk Fusionにインポートし、ソリッド化した。その後、骨折部位と思しき部分でモデルを切断した。
+骨折部位に入れるヒンジには、ボールジョイントを採用した。これは、厳密に回転軸を定義する必要がないためである(骨折の場合、折れた部分や回転軸を厳密に定めるのは難しいと判断した)。なるべく骨の外観を損ねずにヒンジを入れたかったので、ジョイント部分の直径は4mmとした(強度を維持できる最小サイズだと思う)。ボールジョイント部分の設計を\figref{fig:ball-joint}に示す。
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\linewidth]{img/ball-joint.png}
+  \caption{ボールジョイントの設計}
+  \label{fig:ball-joint}
+\end{figure}
+
+3D Slicerで出力したSTLファイルをAutodesk Fusionにインポートし、ソリッド化した。その後、骨折部位と思しき部分でモデルを切断し、切断部分にボールジョイントを組み込んだ。このとき、骨折部分が見やすい方向からモデルを見たときに、なるべくヒンジ部分が隠れるように調整を行った。
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\linewidth]{img/fusion2.png}
+  \caption{ヒンジを組み込んだ3Dモデル\\(ヒンジを見やすい方向から)}
+  \label{fig:joint-embedded}
+\end{figure}
 
 
 
@@ -121,7 +137,7 @@ BambuLab A1 miniによって、立体化した右鎖骨および骨折部位に�
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\linewidth]{img/img1.JPG}
-  \caption{3D Slicerで出力した右鎖骨}
+  \caption{ヒンジを組み込んでいない右鎖骨}
   \label{fig:img1}
 \end{figure}
 
