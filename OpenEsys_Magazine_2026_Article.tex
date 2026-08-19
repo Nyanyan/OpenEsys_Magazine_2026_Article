@@ -118,12 +118,12 @@ CTデータの立体化には3D Slicer\cite{3d-slicer}を使用した。3D Slice
 %   \label{fig:3dslicer-bones}
 % \end{figure*}
 
-\begin{figure}[!htbp]
+\begin{figure*}[!t]
   \centering
-  \includegraphics[width=1.0\linewidth]{img/3dslicer-bones.png}
+  \includegraphics[width=\textwidth]{img/3dslicer-bones.png}
   \caption{右鎖骨周辺の骨部分を抽出した様子}
   \label{fig:3dslicer-bones}
-\end{figure}
+\end{figure*}
 
 
 その後、手作業で右鎖骨以外の部分を削除し、欠損している部分(骨端は特に欠損が多かった)を補い、3D Slicerの平滑化機能を使って、右鎖骨の3Dデータを得た(\figref{fig:3dslicer-clavicle})。これをSTLファイルとして出力することで、印刷可能になる。
