@@ -18,6 +18,21 @@
 \setlength{\parskip}{0pt}
 
 \newcommand{\figref}[1]{\figurename\ref{#1}}
+\newif\ifshowpagenumbers
+\showpagenumberstrue % ページ番号を非表示にする場合は \showpagenumbersfalse に変更する
+
+\makeatletter
+\let\ps@defaultplain\ps@plain
+\newcommand{\setpagenumbervisibility}{%
+  \ifshowpagenumbers
+    \let\ps@plain\ps@defaultplain
+    \pagestyle{plain}%
+  \else
+    \pagestyle{empty}%
+    \let\ps@plain\ps@empty
+  \fi
+}
+\makeatother
 
 \title{\vspace{-8mm}\bfseries 僕の鎖骨をつくりたい}
 \author{
@@ -28,6 +43,7 @@
 \date{}
 
 \begin{document}
+\setpagenumbervisibility
 
 \twocolumn[
   \maketitle
