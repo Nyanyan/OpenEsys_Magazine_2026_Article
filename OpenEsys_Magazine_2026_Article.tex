@@ -102,12 +102,12 @@ CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル�
 % \end{strip}
 
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
   \centering
-  \includegraphics[width=1.0\textwidth]{img/proradviewer_hidden.png}
+  \includegraphics[width=1.0\linewidth]{img/proradviewer_hidden.png}
   \captionof{figure}{紹介状のCDに付属していたビューワーを開いた様子(個人情報等は隠してある)}
   \label{fig:proradviewer_hidden}
-\end{figure*}
+\end{figure}
 
 
 
@@ -120,12 +120,19 @@ CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル�
 
 CTデータの立体化には3D Slicer\cite{3d-slicer}を使用した。3D Slicerでは、特定のCT画像群を指定して、Thresholdという値を調整することで、任意の明るさの画素を自動で選択する機能がある。骨は白く写るため、この機能で右鎖骨周辺のCT画像の中から骨のみを抽出した(\figref{fig:3dslicer-bones})。
 
-\begin{figure*}[!t]
+% \begin{figure*}[!t]
+%   \centering
+%   \includegraphics[width=1.0\textwidth]{img/3dslicer-bones.png}
+%   \caption{右鎖骨周辺の骨部分を抽出した様子}
+%   \label{fig:3dslicer-bones}
+% \end{figure*}
+
+\begin{figure}[!htbp]
   \centering
-  \includegraphics[width=1.0\textwidth]{img/3dslicer-bones.png}
+  \includegraphics[width=1.0\linewidth]{img/3dslicer-bones.png}
   \caption{右鎖骨周辺の骨部分を抽出した様子}
   \label{fig:3dslicer-bones}
-\end{figure*}
+\end{figure}
 
 
 その後、手作業で右鎖骨以外の部分を削除し、欠損している部分(骨端は特に欠損が多かった)を補い、平滑化して右鎖骨の3Dデータを得た(\figref{fig:3dslicer-clavicle})。これをSTLファイルとして出力した。
@@ -182,7 +189,7 @@ BambuLab A1 miniによって、立体化した右鎖骨および骨折部位に�
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\linewidth]{img/img2.JPG}
-  \caption{手前2つは骨折部にヒンジを入れ、整復したもの}
+  \caption{手前はヒンジを入れ、整復したもの。真ん中はヒンジを入れ、骨折状態にしたもの}
   \label{fig:img2}
 \end{figure}
 
