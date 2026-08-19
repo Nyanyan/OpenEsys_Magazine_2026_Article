@@ -34,6 +34,11 @@
   \vspace{5mm}
 ]
 
+
+
+
+
+
 \section{はじめに}
 
 2026年7月、著者は輪行旅\footnote{自分の自転車を交通機関で運び、旅行先で乗ること}の最中、落車した。旅行中は雨の日が多く、雨が止んだタイミングで自転車に乗っていたところ、ブレーキをかけたときに濡れた路面でスリップした。自転車でスリップした場合、自転車と共に倒れると腕や膝をひどく擦りむいてしまうため、私は自転車を離れ、前回り受け身を行った。その際、首から下げていたサングラスを首と右鎖骨の間に挟み、その状態で強い衝撃がかかった結果、右鎖骨を骨折した。落車後すぐ起き上がり、左手親指を覗いて擦過傷がないことを確認した。しかし、右肩に痛みを感じ、触ったところ、明らかに右鎖骨の形状が通常とは異なることを確認した。他にも怪我がある可能性があり、また、自力での移動に困難を抱えてしまったため、自ら救急車を呼び、病院に搬送された。
@@ -50,83 +55,129 @@
 本稿では、最初に搬送された病院から東京の病院に書いていただいた紹介状に含まれていたCDからCTデータを取り出し、利用した。なお、東京の病院では紹介状のCDを返していただくことができた\footnote{紹介状付属のCDがどう処理されるかは、時と場合によって違うと思われる}。
 
 
+
+
+
+
 \section{関連研究}
 
 CTとはComputed Tomographyの略であり、体に向けて様々な角度からX線を照射することで、体の輪切り画像を作成する技術である。そのため、体内を立体的に把握することができる。この技術特性上、著者はCT画像撮影時に、この画像を使って体内の任意の部分(骨や内蔵など)の3Dモデルを作成することは、技術的に可能であることを確信した。
 
+CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル化するためのオープンソースソフトウェアとして、3D Slicer\cite{3d-slicer}が存在する。本稿では、3D Slicerを用いてCT画像から鎖骨の3Dデータを作成した。
+
+今回の著者の手術ではおそらく行われていないが、複雑な手術の前にCTデータから作成した3Dモデルを活用して術前計画を練る取り組みがある\cite{jiang-m-et-al-2021}。この先行事例では、CT画像のピクセルを任意の閾値で抽出する方法を使い、抽出した領域を立体化することで3Dモデルを作成している。本稿では、医療用途ではないものの、この先行事例と同様の手法で右鎖骨の立体化を行った。
 
 
 
 
-\section{提案手法}
 
-提案する設計、方式、アーキテクチャ、または実践内容を説明する。
-必要に応じて図表を用いる。
 
-\begin{figure}[!htbp]
-  \centering
-  \fbox{\rule{0pt}{28mm}\rule{0.9\linewidth}{0pt}}
-  \caption{提案システムの概要図}
-  \label{fig:overview}
-\end{figure}
 
-図\ref{fig:overview}に、提案システムの全体像を示す。
-本文では、各構成要素の役割とデータの流れを順に説明する。
+\section{紹介状データの読み込み}
 
-\section{実装}
 
-実装環境、利用したライブラリ、主要なモジュール構成を述べる。
-再現性を意識し、バージョンや設定値も必要に応じて記録する。
 
-\begin{table}[t]
-  \centering
-  \caption{実装環境}
-  \label{tab:environment}
-  \begin{tabular}{ll}
-    \toprule
-    項目 & 内容 \\
-    \midrule
-    OS & Ubuntu 24.04 / Windows 11 \\
-    言語 & Python / C++ / Rust など \\
-    ライブラリ & Example Library \\
-    \bottomrule
-  \end{tabular}
-\end{table}
 
-\section{評価}
 
-評価方法、データセット、比較条件、評価指標を説明する。
-結果だけでなく、結果が示す意味や制約も記述する。
 
-\begin{equation}
-  \mathrm{Score} =
-  \frac{1}{N}\sum_{i=1}^{N} x_i
-  \label{eq:score}
-\end{equation}
 
-式\ref{eq:score}は、評価指標の一例である。
 
-\section{考察}
 
-提案手法の有効性、限界、適用範囲について議論する。
-予想と異なる結果が出た場合は、その理由を技術的・運用的観点から検討する。
+\section{3D Slicerによる立体化}
 
-\section{おわりに}
 
-本稿の内容を簡潔にまとめ、今後の課題を述べる。
-将来的な展開、追加実験、実運用に向けた改善点などを記載する。
+
+
+
+
+
+\section{骨折部位のデータ加工}
+
+
+
+
+
+
+
+
+\section{3Dプリント}
+
+
+
+
+
+
+% \section{提案手法}
+
+% 提案する設計、方式、アーキテクチャ、または実践内容を説明する。
+% 必要に応じて図表を用いる。
+
+% \begin{figure}[!htbp]
+%   \centering
+%   \fbox{\rule{0pt}{28mm}\rule{0.9\linewidth}{0pt}}
+%   \caption{提案システムの概要図}
+%   \label{fig:overview}
+% \end{figure}
+
+% 図\ref{fig:overview}に、提案システムの全体像を示す。
+% 本文では、各構成要素の役割とデータの流れを順に説明する。
+
+% \section{実装}
+
+% 実装環境、利用したライブラリ、主要なモジュール構成を述べる。
+% 再現性を意識し、バージョンや設定値も必要に応じて記録する。
+
+% \begin{table}[t]
+%   \centering
+%   \caption{実装環境}
+%   \label{tab:environment}
+%   \begin{tabular}{ll}
+%     \toprule
+%     項目 & 内容 \\
+%     \midrule
+%     OS & Ubuntu 24.04 / Windows 11 \\
+%     言語 & Python / C++ / Rust など \\
+%     ライブラリ & Example Library \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+
+% \section{評価}
+
+% 評価方法、データセット、比較条件、評価指標を説明する。
+% 結果だけでなく、結果が示す意味や制約も記述する。
+
+% \begin{equation}
+%   \mathrm{Score} =
+%   \frac{1}{N}\sum_{i=1}^{N} x_i
+%   \label{eq:score}
+% \end{equation}
+
+% 式\ref{eq:score}は、評価指標の一例である。
+
+% \section{考察}
+
+% 提案手法の有効性、限界、適用範囲について議論する。
+% 予想と異なる結果が出た場合は、その理由を技術的・運用的観点から検討する。
+
+% \section{おわりに}
+
+% 本稿の内容を簡潔にまとめ、今後の課題を述べる。
+% 将来的な展開、追加実験、実運用に向けた改善点などを記載する。
 
 \section*{謝辞}
 
-本研究・開発に協力いただいた方々、助成、コミュニティへの謝辞を記載する。
+落車時に搬送してくださった救急隊、警察の皆様、治療に尽力してくださった病院の方々に感謝いたします。以後、事故を起こさないよう気をつけて自転車に乗ります。
 
 \begin{thebibliography}{9}
 
-\bibitem{sample}
-著者名,
-``論文または記事タイトル,''
-\textit{会議名または誌名},
-vol.~1, no.~1, pp.~1--10, 2026.
+\bibitem{3d-slicer}
+Fedorov, A. et al. (2012). 3D Slicer as an Image Computing Platform for the Quantitative Imaging Network. Magnetic Resonance Imaging, 30(9), 1323–1341. \url{https://doi.org/10.1016/j.mri.2012.05.001}
+% Fedorov, A., Beichel, R., Kalpathy-Cramer, J., Finet, J., Fillion-Robin, J., Pujol, S., Bauer, C., Jennings, D., Fennessy, F., Sonka, M., Buatti, J., Aylward, S., Miller, J., Pieper, S., \& Kikinis, R. (2012). 3D Slicer as an Image Computing Platform for the Quantitative Imaging Network. Magnetic Resonance Imaging, 30(9), 1323–1341. \url{https://doi.org/10.1016/j.mri.2012.05.001}
+
+\bibitem{jiang-m-et-al-2021}
+Jiang, M. et al. (2021). 3D Printed Patient-Specific Complex Hip Arthroplasty Models Streamline the Preoperative Surgical Workflow: A Pilot Study. Front. Surg. 8:687379. \url{https://doi.org/10.3389/fsurg.2021.687379}
+% Jiang M, Coles-Black J, Chen G, Alexander M, Chuen J and Hardidge A (2021) 3D Printed Patient-Specific Complex Hip Arthroplasty Models Streamline the Preoperative Surgical Workflow: A Pilot Study. Front. Surg. 8:687379. doi: 10.3389/fsurg.2021.687379
 
 \end{thebibliography}
 
