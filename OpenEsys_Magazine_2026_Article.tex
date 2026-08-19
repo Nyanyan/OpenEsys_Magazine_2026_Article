@@ -4,6 +4,8 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{cuted}
+\usepackage{capt-of}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 
@@ -16,7 +18,7 @@
 \title{\vspace{-8mm}\bfseries 自分の鎖骨を印刷したい}
 \author{
   山名琢翔$^{1}$\\[1mm]
-  \small $^{1}$筑波大学大学院 デザイン学学位プログラム 博士前期課程2年\\
+  \small $^{1}$筑波大学大学院 デザイン学学位プログラム 博士前期課程2年 (元esys20)\\
   \small \texttt{yamana.takuto.rg@alumni.tsukuba.ac.jp}
 }
 \date{}
@@ -26,7 +28,7 @@
 \twocolumn[
   \maketitle
   \begin{abstract}
-    本稿では、CTデータから3Dモデルを作成し、3Dプリンタによって印刷する方法を紹介する。著者は2026年7月に自転車で転倒し右鎖骨を骨折し、病院でCTを撮った。退院後、そのときの画像を入手し、オープンソースソフトウェアによって3Dモデル化した。さらに、3Dモデルを加工し、骨片をつなぐヒンジをつけることで、骨折と整復を体験できる立体パズルを作成した。
+    本稿では、CTデータから3Dモデルを作成し、3Dプリンタによって印刷する方法を紹介する。著者は2026年7月に自転車で転倒して右鎖骨を骨折し、病院でCTを撮った。退院後、そのときの画像を入手し、オープンソースソフトウェアによって3Dモデル化した。さらに、3Dモデルを加工し、骨片をつなぐヒンジをつけることで、骨折と整復を体験できる立体パズルを作成した。
   \end{abstract}
 
   \vspace{1mm}
@@ -43,9 +45,9 @@
 
 \section{はじめに}
 
-2026年7月、著者は輪行旅\footnote{自分の自転車を交通機関で運び、旅行先で乗ること}の最中、落車した。旅行中は雨の日が多く、雨が止んだタイミングで自転車に乗っていたところ、ブレーキをかけたときに濡れた路面でスリップした。自転車でスリップした場合、自転車と共に倒れると腕や膝をひどく擦りむいてしまうため、私は自転車を離れ、前回り受け身を行った。その際、首から下げていたサングラスを首と右鎖骨の間に挟み、その状態で強い衝撃がかかった結果、右鎖骨を骨折した。落車後すぐ起き上がり、左手親指を覗いて擦過傷がないことを確認した。しかし、右肩に痛みを感じ、触ったところ、明らかに右鎖骨の形状が通常とは異なることを確認した。他にも怪我がある可能性があり、また、自力での移動に困難を抱えてしまったため、自ら救急車を呼び、病院に搬送された。
+2026年7月、著者は輪行旅\footnote{自分の自転車を交通機関で運び、旅行先で乗ること}の最中、落車した。旅行中は雨の日が多く、雨が止んだわずかな時間で自転車に乗っていたところ、ブレーキをかけたときに濡れた路面でスリップした。自転車でスリップした場合、自転車と共に倒れると腕や膝をひどく擦りむいてしまうため、また、車の往来がなかったため、私は自転車を離れて前回り受け身を行った。落車後すぐ起き上がり、大きな擦過傷がないことを確認した。しかし、右肩に痛みを感じて触ったところ、明らかに右鎖骨の形状が通常とは異なることを確認した。他にも怪我がある可能性があり、また、自力での移動に困難を抱えてしまったため、自ら救急車を呼び、病院に搬送された。
 
-病院ではCT(胴体全体、右鎖骨周辺、頭部)とレントゲンを撮影し(\figref{fig:hospital-x-ray}、\figref{fig:hospital-r-clavicle})、右鎖骨の骨折以外に以上がないことを確認していただいた。整形外科の先生には「この折れ方だと多分手術になりますね」と言われた。緊急性を要さないこと、および旅行先での怪我であったことを鑑みて、紹介状を書いてもらい、実家のある東京の病院にかかることとなった。東京の病院では、整形外科の先生に笑顔で「手術ですね！」と言われ、その後1週間程度で手術を行った。
+病院ではCTとレントゲンを撮影し(\figref{fig:hospital-x-ray}、\figref{fig:hospital-r-clavicle})、右鎖骨の骨折以外に以上がないことを確認していただいた。整形外科の先生には「この折れ方だと多分手術になりますね」と言われた。緊急性を要さないこと、および旅行先での怪我であったことを鑑みて、紹介状を書いてもらい、実家のある東京の病院にかかることとなった。東京の病院では、整形外科の先生に笑顔で「手術ですね！」と言われ、その後1週間程度で手術を行った。
 
 \begin{figure}[!htbp]
   \centering
@@ -70,7 +72,7 @@
 
 \section{関連研究}
 
-CTとはComputed Tomographyの略であり、体に向けて様々な角度からX線を照射することで、体の輪切り画像を作成する技術である。そのため、体内を立体的に把握することができる。この技術特性上、著者はCT画像撮影時に、この画像を使って体内の任意の部分(骨や内蔵など)の3Dモデルを作成することは、技術的に可能であることを確信した。
+CTとはComputed Tomographyの略であり、体に向けて様々な角度からX線を照射することで、体の輪切り画像を作成する技術である。そのため、体内を立体的に把握することができる。
 
 CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル化するためのオープンソースソフトウェアとして、3D Slicer\cite{3d-slicer}が存在する。本稿では、3D Slicerを用いてCT画像から鎖骨の3Dデータを作成した。
 
@@ -87,15 +89,25 @@ CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル�
 
 \section{紹介状データの読み込み}
 
-病院の紹介状CDを開くと、README.txtが存在しており、その中には「ディスク内の「DICOM Viewer（またはDICOM Viewer.bat）」をダブルクリックしてください。」という記載があった。そのため、該当batファイルを実行すると、撮影したCTやレントゲンの画像が閲覧できる、\figref{fig:proradviewer_hidden}に示すビューワーが起動した。紹介状のCDを読み込むのに専用ソフトが不要であるのは非常に素晴らしいことである。なお、紹介状には\figref{fig:hospital-r-clavicle}に示した鎖骨のデータが含まれていたが、これは31枚の画像として含まれているのみであり、このデータから3Dデータを作ることは不可能であった。
+病院の紹介状CDを開くとREADME.txtが存在しており、その中には「ディスク内の「DICOM Viewer（またはDICOM Viewer.bat）」をダブルクリックしてください。」という記載があった。そのため、該当batファイルを実行すると、\figref{fig:proradviewer_hidden}に示すビューワーが起動した。このビューワーによって、すべてのCTやレントゲン画像を閲覧することができた。紹介状のCDを読み込むのに専用ソフトが不要であるのは非常に素晴らしいことである。各種画像を閲覧するだけで、自分が確かに人間の体をしていることを実感できるため、非常に面白かった。
+
+なお、紹介状には\figref{fig:hospital-r-clavicle}に示した鎖骨単体の3Dデータらしきものが含まれていたが、これはよく解析すると特定の軸に沿って回転させた様子を写した31枚の画像データでしかなく、このデータから3Dデータを作ることは不可能であった。
 
 
-\begin{figure}[!htbp]
+% \begin{strip}
+%   \centering
+%   \includegraphics[width=1.0\textwidth]{img/proradviewer_hidden.png}
+%   \captionof{figure}{紹介状のCDに付属していたビューワーを開いた様子(個人情報等は隠してある)}
+%   \label{fig:proradviewer_hidden}
+% \end{strip}
+
+
+\begin{figure*}[!t]
   \centering
-  \includegraphics[width=\linewidth]{img/proradviewer_hidden.png}
-  \caption{紹介状のCDに付属していたビューワー}
+  \includegraphics[width=1.0\textwidth]{img/proradviewer_hidden.png}
+  \captionof{figure}{紹介状のCDに付属していたビューワーを開いた様子(個人情報等は隠してある)}
   \label{fig:proradviewer_hidden}
-\end{figure}
+\end{figure*}
 
 
 
@@ -106,14 +118,14 @@ CTやMRIなどの画像を解析し、必要な部分を抽出して3Dモデル�
 
 \section{3D Slicerによる立体化}
 
-CTデータの立体化には3D Slicer\cite{3d-slicer}を使用した。3D Slicerでは、特定のCT画像群を指定して、Thresholdという値を調整することで、任意の明るさの画素を自動で選択する機能がある。骨は非常に白く写るため、この機能で右鎖骨周辺のCT画像の中から骨のみを抽出した(\figref{fig:3dslicer-bones})。
+CTデータの立体化には3D Slicer\cite{3d-slicer}を使用した。3D Slicerでは、特定のCT画像群を指定して、Thresholdという値を調整することで、任意の明るさの画素を自動で選択する機能がある。骨は白く写るため、この機能で右鎖骨周辺のCT画像の中から骨のみを抽出した(\figref{fig:3dslicer-bones})。
 
-\begin{figure}[!htbp]
+\begin{figure*}[!t]
   \centering
-  \includegraphics[width=\linewidth]{img/3dslicer-bones.png}
+  \includegraphics[width=1.0\textwidth]{img/3dslicer-bones.png}
   \caption{右鎖骨周辺の骨部分を抽出した様子}
   \label{fig:3dslicer-bones}
-\end{figure}
+\end{figure*}
 
 
 その後、手作業で右鎖骨以外の部分を削除し、欠損している部分(骨端は特に欠損が多かった)を補い、平滑化して右鎖骨の3Dデータを得た(\figref{fig:3dslicer-clavicle})。これをSTLファイルとして出力した。
